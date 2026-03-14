@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user profile information and role.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["citizen", "volunteer", "admin"] },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "age": { "type": "number" },
+        "gender": { "type": "string" },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "email", "role"]
+    },
+    "Volunteer": {
+      "title": "Volunteer Data",
+      "description": "Stores volunteer-specific skills and availability.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "age": { "type": "number" },
+        "gender": { "type": "string" },
+        "description": { "type": "string" },
+        "availability": { "type": "boolean" },
+        "rating": { "type": "number" }
+      },
+      "required": ["userId", "skills"]
+    },
+    "Crisis": {
+      "title": "Crisis Report",
+      "description": "Stores emergency alerts and their status.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "crisisType": { "type": "string" },
+        "description": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "priority": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "status": { "type": "string", "enum": ["pending", "responding", "resolved"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "crisisType", "description", "priority", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/volunteers/{volunteerId}": {
+      "schema": "Volunteer",
+      "description": "Volunteer details"
+    },
+    "/crises/{crisisId}": {
+      "schema": "Crisis",
+      "description": "Emergency reports"
+    }
+  }
+}

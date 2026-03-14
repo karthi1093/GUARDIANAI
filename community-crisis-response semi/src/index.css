@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-primary: var(--primary);
+  --color-brand-secondary: var(--secondary);
+  --color-brand-accent: var(--accent);
+  --color-brand-bg: var(--bg);
+  --color-brand-surface: var(--surface);
+  --color-brand-border: var(--border);
+  --color-brand-text: var(--text);
+}
+
+:root {
+  --bg: #05070a;
+  --text: #ffffff;
+  --surface: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+  --primary: #00d2ff;
+  --secondary: #9d50bb;
+  --accent: #6e48aa;
+  --matte-card: #121418;
+}
+
+.light {
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --surface: rgba(0, 0, 0, 0.02);
+  --border: rgba(0, 0, 0, 0.06);
+  --primary: #0ea5e9;
+  --secondary: #8b5cf6;
+  --accent: #d946ef;
+  --matte-card: #ffffff;
+}
+
+body {
+  @apply font-sans antialiased text-brand-text bg-brand-bg min-h-screen selection:bg-brand-primary/30 transition-colors duration-300;
+  background-image: 
+    radial-gradient(circle at 0% 0%, var(--color-brand-primary) / 0.1, transparent 50%),
+    radial-gradient(circle at 100% 100%, var(--color-brand-secondary) / 0.1, transparent 50%);
+  background-attachment: fixed;
+}
+
+.light body {
+  background-image: 
+    radial-gradient(circle at 0% 0%, var(--color-brand-primary) / 0.05, transparent 50%),
+    radial-gradient(circle at 100% 100%, var(--color-brand-secondary) / 0.05, transparent 50%);
+}
+
+.matte {
+  @apply bg-[var(--matte-card)] border border-brand-border shadow-sm;
+}
+
+.glass {
+  @apply bg-brand-surface backdrop-blur-xl border border-brand-border;
+}
+
+.glow-primary {
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px rgba(157, 80, 187, 0.3);
+}

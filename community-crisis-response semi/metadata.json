@@ -1,0 +1,9 @@
+{
+  "name": "Community Crisis Response",
+  "description": "A real-time emergency response platform that matches citizens in crisis with nearby skilled volunteers using AI classification and voice assistance.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
